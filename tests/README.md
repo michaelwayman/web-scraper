@@ -1,0 +1,5 @@
+# Tests
+
+```
+python runtests.py
+```
