@@ -32,6 +32,9 @@ class Url:
     def __str__(self):
         return self.normalized()
 
+    def __repr__(self):
+        return self.normalized()
+
 
 def url_filter(url):
     """ Filter to remove non HTML URLs """
