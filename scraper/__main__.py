@@ -44,7 +44,7 @@ def main():
 if __name__ == '__main__':
     # Config stuff
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    sys.excepthook = lambda et, e, tb: print(f'{et.__name__}: {e}')
+    # sys.excepthook = lambda et, e, tb: print(f'{et.__name__}: {e}')
 
     # Start the main program
     main()

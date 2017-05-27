@@ -22,7 +22,7 @@ from urls import urls_from_html
 
 class DownloadScheduler:
 
-    def __init__(self, callback, initial=None, processes=5):
+    def __init__(self, callback, initial=None, processes=5, url_filter=None):
         """ DownloadScheduler downloads Web pages at certain URLs
         Schedules newly discovered links, adding them to a queue, in a "crawling" fashion
         Args:
@@ -34,6 +34,7 @@ class DownloadScheduler:
         self.queue = deque(initial or [])
         self.visited = set()
         self.processes = processes
+        self.url_filter = url_filter
 
     def download_complete(self, future, url):
         """ Callback when a download completes
@@ -46,7 +47,7 @@ class DownloadScheduler:
         except Exception as e:
             print(f'Exception {e}')
         else:
-            urls = urls_from_html(html, url.url)
+            urls = list(filter(self.url_filter, urls_from_html(html, url.url)))
             self.queue.extendleft(urls)
             self.callback(url.url, html)
 

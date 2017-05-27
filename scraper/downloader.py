@@ -69,7 +69,6 @@ if __name__ == '__main__':
         import AppKit
         info = AppKit.NSBundle.mainBundle().infoDictionary()
         info["LSBackgroundOnly"] = "1"
-
     # render_engine.py needs to be able to run as a
     # standalone script to achieve parallelization.
     parser = argparse.ArgumentParser()
